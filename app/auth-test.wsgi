@@ -1,13 +1,12 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
 
-def application(environ, start_response):
-    status = '200 OK'
-    output = 'Hello World!'
+import sys, os
 
-    response_headers = [
-          ('Content-type', 'text/plain'),
-          ('Content-Length', str(len(output)))]
-          
-    start_response(status, response_headers)
-    return [output]
+app_dir = '/home/carruth/auth-test/app'
+os.chdir(app_dir)
+sys.path.insert(0, app_dir)
 
+import settings
+
+from auth_web import app as application
